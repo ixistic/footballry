@@ -1,7 +1,9 @@
-server 'web8.cs.ait.ac.th',
-       user: 'deploy',
-       roles: %w(web app db),
-       ssh
+server 'web8.cs.ait.ac.th:443',
+   user: 'deploy',
+   roles: %w(web app db),
+   ssh_options: {
+       forward_agent: true
+   }
 
 
 # server-based syntax
