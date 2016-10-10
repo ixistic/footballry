@@ -14,7 +14,7 @@ set :default_env, {
     'SECRET_KEY_BASE' => 'b2dcc37e0b0ceb395b978e0439d1d5bb751c58de02d38a62c0760f06ab2bc1c6dd671e8fc9faec8fbb630d3c42e84e2ac736df5bb9fc5437ec4dcc085fcf3e7c'
 }
 
-set :deploy_to, '/home/deploy/footballry'
+set :deploy_to, '/home/deploy/web8/footballry'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
