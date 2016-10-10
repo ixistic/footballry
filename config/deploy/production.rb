@@ -1,4 +1,4 @@
-server 'web8.cs.ait.ac.th:443',
+server 'web8.cs.ait.ac.th:22',
    user: 'deploy',
    roles: %w(web app db),
    ssh_options: {
