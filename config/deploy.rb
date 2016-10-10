@@ -15,7 +15,7 @@ set :default_env, {
 }
 
 require 'net/ssh/proxy/command'
-set :ssh_options, proxy: Net::SSH::Proxy::Command.new('ssh st118802@bazooka.cs.ait.ac.th -W %h:%p')
+set :ssh_options, proxy: Net::SSH::Proxy::Command.new('ssh st118802@bazooka.cs.ait.ac.th nc %h %p')
 
 
 # Default branch is :master
