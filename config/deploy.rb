@@ -15,7 +15,6 @@ set :default_env, {
 }
 
 set :deploy_to, '/home/deploy/web8/footballry'
-append :linked_files, 'config/database.yml', 'config/secrets.yml'
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
