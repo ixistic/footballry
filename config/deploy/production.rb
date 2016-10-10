@@ -2,7 +2,8 @@ server 'web8.cs.ait.ac.th:22',
    user: 'deploy',
    roles: %w(web app db),
    ssh_options: {
-       forward_agent: true
+       # proxy: Net::SSH::Proxy::Command.new('ssh st118802@bazooka.cs.ait.ac.th nc %h %p'),
+       forward_agent: true,
    }
 
 

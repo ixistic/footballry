@@ -5,6 +5,8 @@ set :application, 'footballry-v001'
 set :repo_url, 'https://github.com/ixistic/footballry.git'
 set :passenger_restart_with_touch, true
 set :rbenv_ruby, '2.3.1'
+# require 'net/ssh/proxy/command'
+# set :ssh_options, proxy: Net::SSH::Proxy::Command.new('ssh st118802@bazooka.cs.ait.ac.th nc %h %p')
 
 set :default_env, {
     'http_proxy' => '192.41.170.23:3128',
@@ -14,8 +16,7 @@ set :default_env, {
     'SECRET_KEY_BASE' => 'b2dcc37e0b0ceb395b978e0439d1d5bb751c58de02d38a62c0760f06ab2bc1c6dd671e8fc9faec8fbb630d3c42e84e2ac736df5bb9fc5437ec4dcc085fcf3e7c'
 }
 
-require 'net/ssh/proxy/command'
-set :ssh_options, proxy: Net::SSH::Proxy::Command.new('ssh st118802@bazooka.cs.ait.ac.th nc %h %p')
+
 
 
 # Default branch is :master
