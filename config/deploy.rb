@@ -11,8 +11,38 @@ set :default_env, {
     'https_proxy' => '192.41.170.23:3128',
     'ftp_proxy' => '192.41.170.23:3128',
     'HTTPS_PROXY_REQUEST_FULLURI' => 'false',
-    'SECRET_KEY_BASE' => '9480572e38abce1ea276c3766abb3910631077569e1f22c54913fbfd2c51643cf4c951893035adf6e855c431c1fc2a7eb0e35cdbcf1687e7710473366aff252b'
+    'SECRET_KEY_BASE' => 'b2dcc37e0b0ceb395b978e0439d1d5bb751c58de02d38a62c0760f06ab2bc1c6dd671e8fc9faec8fbb630d3c42e84e2ac736df5bb9fc5437ec4dcc085fcf3e7c'
 }
 
 set :deploy_to, '/home/deploy/web8/footballry'
+append :linked_files, 'config/database.yml', 'config/secrets.yml'
+# Default branch is :master
+# ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
+# Default deploy_to directory is /var/www/my_app_name
+# set :deploy_to, '/var/www/my_app_name'
+
+# Default value for :scm is :git
+# set :scm, :git
+
+# Default value for :format is :airbrussh.
+# set :format, :airbrussh
+
+# You can configure the Airbrussh format using :format_options.
+# These are the defaults.
+# set :format_options, command_output: true, log_file: 'log/capistrano.log', color: :auto, truncate: :auto
+
+# Default value for :pty is false
+# set :pty, true
+
+# Default value for :linked_files is []
+# append :linked_files, 'config/database.yml', 'config/secrets.yml'
+
+# Default value for linked_dirs is []
+# append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'public/system'
+
+# Default value for default_env is {}
+# set :default_env, { path: "/opt/ruby/bin:$PATH" }
+
+# Default value for keep_releases is 5
+# set :keep_releases, 5
