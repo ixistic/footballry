@@ -40,6 +40,11 @@ gem 'bootstrap', '~> 4.0.0.alpha3.1'
 gem 'font-awesome-sass'
 # Rails Admin
 gem 'rails_admin', '~> 1.0'
+# Profiling
+gem 'rack-mini-profiler'
+gem 'flamegraph'
+gem 'stackprof'
+gem 'fast_stack'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

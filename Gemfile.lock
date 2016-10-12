@@ -124,7 +124,9 @@ GEM
     factory_girl_rails (4.7.0)
       factory_girl (~> 4.7.0)
       railties (>= 3.0.0)
+    fast_stack (0.2.0)
     ffi (1.9.14)
+    flamegraph (0.9.5)
     font-awesome-rails (4.6.3.1)
       railties (>= 3.2, < 5.1)
     font-awesome-sass (4.6.2)
@@ -179,6 +181,8 @@ GEM
     pkg-config (1.1.7)
     puma (3.6.0)
     rack (2.0.1)
+    rack-mini-profiler (0.10.1)
+      rack (>= 1.2.0)
     rack-pjax (1.0.0)
       nokogiri (~> 1.5)
       rack (>= 1.1)
@@ -277,6 +281,7 @@ GEM
     sshkit (1.11.2)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
+    stackprof (0.2.10)
     therubyracer (0.12.2)
       libv8 (~> 3.16.14.0)
       ref
@@ -320,6 +325,8 @@ DEPENDENCIES
   database_cleaner
   devise
   factory_girl_rails
+  fast_stack
+  flamegraph
   font-awesome-sass
   jbuilder (~> 2.5)
   jquery-rails
@@ -327,6 +334,7 @@ DEPENDENCIES
   listen (~> 3.0.5)
   pg (~> 0.18)
   puma (~> 3.0)
+  rack-mini-profiler
   rails (~> 5.0.0, >= 5.0.0.1)
   rails-controller-testing
   rails_admin (~> 1.0)
@@ -336,6 +344,7 @@ DEPENDENCIES
   simplecov-rcov
   spring
   spring-watcher-listen (~> 2.0.0)
+  stackprof
   therubyracer
   turbolinks (~> 5)
   tzinfo-data
