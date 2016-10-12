@@ -45,6 +45,7 @@ gem 'rack-mini-profiler'
 gem 'flamegraph'
 gem 'stackprof'
 gem 'fast_stack'
+gem 'paper_trail'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

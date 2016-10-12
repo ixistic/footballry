@@ -8,6 +8,8 @@ class User < ApplicationRecord
 
   before_save :assign_role
 
+  has_paper_trail
+
   def assign_role
     self.role = Role.find_by_name("Regular") if self.role.nil?
   end
