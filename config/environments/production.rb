@@ -71,11 +71,6 @@ Rails.application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
-  # If you still want to run it the test environment (and know
-  # what you are doing), put this in your Rails application
-  # configuration:
-  config.web_console.development_only = false
-
   # Use a different logger for distributed setups.
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
