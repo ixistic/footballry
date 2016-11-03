@@ -28,6 +28,7 @@ RailsAdmin.config do |config|
   ## To disable Gravatar integration in Navigation Bar set to false
   # config.show_gravatar true
 
+  PAPER_TRAIL_AUDIT_MODEL = ['User', 'Role']
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory
@@ -40,7 +41,11 @@ RailsAdmin.config do |config|
     show_in_app
 
     ## With an audit adapter, you can add:
-    history_index
-    history_show
+    history_index do
+      only PAPER_TRAIL_AUDIT_MODEL
+    end
+    history_show do
+      only PAPER_TRAIL_AUDIT_MODEL
+    end
   end
 end
