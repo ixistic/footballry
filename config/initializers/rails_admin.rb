@@ -1,6 +1,7 @@
 RailsAdmin.config do |config|
 
   ### Popular gems integration
+  config.main_app_name = ["Footballry", "AdminPanel"]
 
   ## == Devise ==
   config.authenticate_with do
