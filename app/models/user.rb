@@ -5,12 +5,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :role
+  has_many :post_types
 
   before_save :assign_role
 
   has_paper_trail
-
-
 
   def assign_role
     self.role = Role.find_by_name("Regular") if self.role.nil?

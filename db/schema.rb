@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161012051101) do
+ActiveRecord::Schema.define(version: 20161103180351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "post_types", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "created_by_id"
+    t.integer  "last_edited_by_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["created_by_id"], name: "index_post_types_on_created_by_id", using: :btree
+    t.index ["last_edited_by_id"], name: "index_post_types_on_last_edited_by_id", using: :btree
+  end
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
