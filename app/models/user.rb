@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   belongs_to :role
   has_many :post_types
+  has_many :topics
 
   before_save :assign_role
 
