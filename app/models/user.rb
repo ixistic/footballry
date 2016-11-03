@@ -5,8 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :role
-  has_many :post_types
-  has_many :topics
+  has_many :post_types, dependent: :destroy
+  has_many :topics, dependent: :destroy
 
   before_save :assign_role
 

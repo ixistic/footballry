@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :posts
   resources :topics
   resources :post_types
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161103193539) do
+ActiveRecord::Schema.define(version: 20161103201251) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,22 @@ ActiveRecord::Schema.define(version: 20161103193539) do
     t.datetime "updated_at",        null: false
     t.index ["created_by_id"], name: "index_post_types_on_created_by_id", using: :btree
     t.index ["last_edited_by_id"], name: "index_post_types_on_last_edited_by_id", using: :btree
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string   "title"
+    t.text     "body"
+    t.integer  "topic_id"
+    t.integer  "post_type_id"
+    t.string   "status"
+    t.integer  "created_by_id"
+    t.integer  "last_edited_by_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["created_by_id"], name: "index_posts_on_created_by_id", using: :btree
+    t.index ["last_edited_by_id"], name: "index_posts_on_last_edited_by_id", using: :btree
+    t.index ["post_type_id"], name: "index_posts_on_post_type_id", using: :btree
+    t.index ["topic_id"], name: "index_posts_on_topic_id", using: :btree
   end
 
   create_table "roles", force: :cascade do |t|
@@ -71,5 +87,7 @@ ActiveRecord::Schema.define(version: 20161103193539) do
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
   end
 
+  add_foreign_key "posts", "post_types"
+  add_foreign_key "posts", "topics"
   add_foreign_key "users", "roles"
 end

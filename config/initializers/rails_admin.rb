@@ -28,7 +28,7 @@ RailsAdmin.config do |config|
   ## To disable Gravatar integration in Navigation Bar set to false
   # config.show_gravatar true
 
-  PAPER_TRAIL_AUDIT_MODEL = ['User', 'Role', 'PostType', 'Topic']
+  PAPER_TRAIL_AUDIT_MODEL = ['User', 'Role', 'PostType', 'Topic', 'Post']
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory
