@@ -1,7 +1,9 @@
 require 'test_helper'
 
 class PostTypesControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
   setup do
+    sign_in users(:one)
     @post_type = post_types(:one)
   end
 
@@ -17,7 +19,7 @@ class PostTypesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create post_type" do
     assert_difference('PostType.count') do
-      post post_types_url, params: { post_type: { name: @post_type.name, user_id: @post_type.user_id, user_id: @post_type.user_id } }
+      post post_types_url, params: { post_type: { name: @post_type.name, created_by_id: @post_type.created_by_id, last_edited_by_id: @post_type.last_edited_by_id } }
     end
 
     assert_redirected_to post_type_url(PostType.last)
@@ -34,7 +36,7 @@ class PostTypesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update post_type" do
-    patch post_type_url(@post_type), params: { post_type: { name: @post_type.name, user_id: @post_type.user_id, user_id: @post_type.user_id } }
+    patch post_type_url(@post_type), params: { post_type: { name: @post_type.name, created_by_id: @post_type.created_by_id, last_edited_by_id: @post_type.last_edited_by_id } }
     assert_redirected_to post_type_url(@post_type)
   end
 

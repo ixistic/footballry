@@ -1,11 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  user: one
-  user: one
+  id: 1
+  name: Forum
+  created_by_id: 1
+  last_edited_by_id: 1
 
 two:
-  name: MyString
-  user: two
-  user: two
+  id: 2
+  name: Seller
+  created_by_id: 2
+  last_edited_by_id: 2
