@@ -26,9 +26,9 @@
         <td><%= post.status %></td>
         <td><%= post.created_by.email %></td>
         <td><%= post.last_edited_by.email %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', topic_post_path(@topic, post) %></td>
+        <td><%= link_to 'Edit', edit_topic_post_path(@topic, post) %></td>
+        <td><%= link_to 'Destroy', topic_post_path(@topic, post), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -36,4 +36,4 @@
 
 <br>
 
-<%= link_to 'New Post', new_post_path %>
+<%= link_to 'New Post', new_topic_post_path %>

@@ -35,5 +35,5 @@
   <%= @post.last_edited_by.email %>
 </p>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<%= link_to 'Edit', edit_topic_post_path(@post.topic, @post) %> |
+<%= link_to 'Back', topic_posts_path %>

@@ -5,6 +5,19 @@ class Ability
     user ||= User.new
     if user.admin?
       can :manage, :all
+    elsif user.regular?
+      can :read, :all
+      can :create, Post
+      can :update, Post do |post|
+        post.try(:created_by) == user
+        # post.where(:created_by => user.id).any?
+        # user.posts.where(:id => post.id).any?
+      end
+      can :destroy, Post do |post|
+        post.try(:created_by) == user
+        # post.where(:created_by => user.id).any?
+        # user.posts.where(:id => post.id).any?
+      end
     else
       can :read, :all
     end
