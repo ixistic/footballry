@@ -1,2 +1,64 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <img style="float: right" width="200px" src="<%= asset_path('home/boy.png') %>" alt="Cannot load image" class="img-fluid">
+    </div>
+    <div class="col-md-6">
+      <img width="200px" src="<%= asset_path('home/girl.png') %>" alt="Cannot load image" class="img-fluid">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 text-md-center">
+      <h2>Footballry</h2>
+    </div>
+  </div>
+  <div class="row" style="padding-top: 20px">
+    <div class="col-md-2 offset-md-1">
+      <button type="button" class="btn btn-secondary btn-block">Forum Home</button>
+    </div>
+    <div class="col-md-2">
+      <button type="button" class="btn btn-secondary btn-block">News</button>
+    </div>
+    <div class="col-md-2">
+      <button type="button" class="btn btn-secondary btn-block">Video</button>
+    </div>
+    <div class="col-md-2">
+      <button type="button" class="btn btn-secondary btn-block">Schedules</button>
+    </div>
+    <div class="col-md-2">
+      <button type="button" class="btn btn-secondary btn-block">Marketplace</button>
+    </div>
+  </div>
+  <div class="row" style="padding-top: 20px">
+    <div class="col-md-12">
+      <table class="table">
+        <thead class="thead-inverse">
+        <tr>
+          <th>Topic</th>
+          <th>Posts</th>
+          <th>Last Posts</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% if @topics %>
+          <% @topics.each do |topic| %>
+            <% if !topic.posts.nil? %>
+              <tr>
+                <td><%= link_to topic.title, topic %></td>
+                <td><%= topic.posts.count %></td>
+                <% if topic.posts.last %>
+                  <td><%= topic.posts.last.created_by.email %></td>
+                <% else %>
+                  <td>Unknown</td>
+                <% end %>
+              </tr>
+            <% end %>
+          <% end %>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
