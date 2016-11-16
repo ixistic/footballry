@@ -40,7 +40,7 @@
         </tr>
         </thead>
         <tbody>
-        <% if @topics %>
+        <% if !@topics.nil? %>
           <% @topics.each do |topic| %>
             <% if !topic.posts.nil? %>
               <tr>
