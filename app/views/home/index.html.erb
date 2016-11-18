@@ -46,14 +46,10 @@
               <tr>
                 <td><%= link_to topic.title, topic %></td>
                 <td><%= topic.posts.count %></td>
-                <% !if topic.posts.last.nil? %>
-                    <% if !topic.posts.last.nil? %>
-                        <% if !topic.posts.last.created_by.email.nil? %>
-                          <td><%= topic.posts.last.created_by.email %></td>
-                        <% end %>
-                    <% end %>
-                <% else %>
-                  <td>Unknown</td>
+                <% if !topic.posts.last.nil? %>
+                  <% if !topic.posts.last.created_by.email.nil? %>
+                    <td><%= topic.posts.last.created_by.email %></td>
+                  <% end %>
                 <% end %>
               </tr>
             <% end %>
