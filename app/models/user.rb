@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :topics, dependent: :destroy
 
   before_save :assign_role
+  validates_presence_of :email
+  validates_uniqueness_of :email
 
   has_paper_trail
 

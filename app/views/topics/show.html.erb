@@ -20,16 +20,19 @@
   <%= @topic.last_edited_by.email %>
 </p>
 
-<%= link_to 'Edit', edit_topic_path(@topic) %> |
-<%= link_to 'Back', topics_path %>
+<% if can? :update, @topic %>
+  <%= link_to 'Edit', edit_topic_path(@topic) %>
+<% end %>
 
 <div class="row" style="padding-top: 20px">
+  <div class="col-md-12 text-xs-right" style="padding-bottom: 10px">
+    <%= link_to 'New Post', new_topic_post_path(@topic), :class => 'btn btn-primary' %>
+  </div>
   <div class="col-md-12">
-    <%= link_to 'New Post', new_topic_post_path(@topic) %>
     <table class="table">
       <thead class="thead-inverse">
       <tr>
-        <th>Topic > <%= @topic.title %></th>
+        <th><%= link_to 'Topic', root_path, :style => 'color:white' %> > <%= @topic.title %></th>
         <th>Starter</th>
         <th>Replies</th>
         <th>Views</th>
