@@ -17,6 +17,6 @@ module FootballryV001
         'X-Frame-Options' => 'ALLOWALL'
     }
 
-    config.tinymce.install = :compile
+    config.tinymce.install = :copy
   end
 end
