@@ -11,7 +11,7 @@ set :default_env, {
     'https_proxy' => '192.41.170.23:3128',
     'ftp_proxy' => '192.41.170.23:3128',
     'HTTPS_PROXY_REQUEST_FULLURI' => 'false',
-    'RAILS_RELATIVE_URL_ROOT' => '/footballry'
+    'RAILS_RELATIVE_URL_ROOT' => '/'
 }
 
 set :deploy_to, '/home/deploy/web8/footballry'
