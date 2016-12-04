@@ -29,6 +29,10 @@
   <strong>Last edited by:</strong>
   <%= @post.last_edited_by.email %>
 </p>
+
+<%= text_area_tag :content, "", :class => "tinymce", :rows => 5, :cols => 60 %>
+<%= tinymce %>
+
 <% if can? :update, @post %>
   <%= link_to 'Edit', edit_topic_post_path(@post.topic, @post) %> |
 <% end %>
