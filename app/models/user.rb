@@ -8,6 +8,7 @@ class User < ApplicationRecord
   belongs_to :role
   has_many :post_types, dependent: :destroy, foreign_key: "created_by_id"
   has_many :topics, dependent: :destroy, foreign_key: "created_by_id"
+  has_many :comments, dependent: :destroy, foreign_key: "created_by_id"
 
   before_save :assign_role
   validates_presence_of :email

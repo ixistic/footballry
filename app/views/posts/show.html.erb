@@ -30,11 +30,61 @@
   <%= @post.last_edited_by.email %>
 </p>
 
-<%= text_area_tag :content, "", :class => "tinymce", :rows => 5, :cols => 60 %>
-<%= tinymce %>
-
 <% if can? :update, @post %>
   <%= link_to 'Edit', edit_topic_post_path(@post.topic, @post) %> |
 <% end %>
 
 <%= link_to 'Back', topic_path(@post.topic) %>
+
+<h1>Comments</h1>
+<table>
+  <thead>
+  <tr>
+    <th>Message</th>
+    <th>Created by</th>
+    <th>Last edited by</th>
+    <th colspan="2"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @comments.each do |comment| %>rake
+      <tr>
+        <td><%= comment.message.html_safe %></td>
+        <td><%= comment.created_by.email %></td>
+        <td><%= comment.last_edited_by.email %></td>
+        <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
+        <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+<br>
+
+<%= form_for(@comment) do |f| %>
+    <% if @comment.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+          <ul>
+            <% @comment.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.text_area :message, :class => "tinymce", :rows => 5, :cols => 60 %>
+      <%= tinymce %>
+    </div>
+
+    <div class="field">
+      <%= hidden_field(:comment, :post_id, :value => @post.id) %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>
+

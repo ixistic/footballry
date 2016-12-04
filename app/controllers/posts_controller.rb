@@ -13,6 +13,8 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @topic = Topic.find_by(:id => params[:topic_id])
+    @comment = Comment.new
+    @comments = Comment.where(:post_id => @post.id)
   end
 
   # GET /posts/new
