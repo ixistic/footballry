@@ -12,13 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :message %>
-    <%= f.text_area :message %>
+    <%= f.text_area :message, :class => "tinymce", :rows => 5, :cols => 60 %>
+    <%= tinymce %>
   </div>
 
   <div class="field">
-    <%= f.label :post_id %>
-    <%= f.text_field :post_id %>
+    <%= hidden_field(:comment, :post_id, :value => comment.post_id) %>
   </div>
 
   <div class="actions">
