@@ -9,7 +9,7 @@
   </div>
 <% end %>
 <div class="row">
-  <div class="col-md-12 form-group" style="padding-top: 20px">
+  <div class="col-md-12 form-group" style="padding-top: 30px">
     <h1>
       <% @topic = Topic.find_by_id(@post.topic_id) %>
       <% if @topic.title == 'Marketplace' %>
@@ -26,7 +26,7 @@
     <p>Created by : <%= @post.created_by.email %></p>
   </div>
 </div>
-<div class="row" style="padding-top: 50px;padding-bottom: 50px">
+<div class="row" style="padding-top: 5px;padding-bottom: 50px">
   <div class="col-md-12">
     <p><%= @post.body.html_safe %></p>
   </div>
