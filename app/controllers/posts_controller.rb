@@ -14,7 +14,7 @@ class PostsController < ApplicationController
   def show
     @topic = Topic.find_by(:id => params[:topic_id])
     @comment = Comment.new
-    @comments = Comment.where(:post_id => @post.id)
+    @comments = Comment.where(:post_id => @post.id).order(updated_at: :desc)
   end
 
   # GET /posts/new

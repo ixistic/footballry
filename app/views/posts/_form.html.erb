@@ -1,43 +1,41 @@
-<%= form_for([topic, post],:html => { :multipart => true })  do |f| %>
-  <% if post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+<div class="row">
+  <div class="col-md-12">
+    <%= form_for([topic, post],:html => { :multipart => true })  do |f| %>
+      <% if post.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-      <ul>
-      <% post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+          <ul>
+          <% post.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
+      <div class="form-group">
+        <%= f.label :title %>
+        <%= f.text_field :title, class: 'form-control'%>
+      </div>
 
-  <div class="field">
-    <%= f.label :body %>
-    <%= f.text_area :body, :class => "tinymce", :rows => 5, :cols => 60 %>
-  </div>
+      <div class="form-group">
+        <%= f.label :body %>
+        <%= f.text_area :body, :class => "tinymce form-control", :rows => 5 %>
+      </div>
+        <%= f.hidden_field :topic_id %>
 
-  <div class="field">
-    <%= f.hidden_field :topic_id %>
+      <!--<div class="form-group">-->
+        <%# f.label :post_type_id %>
+        <%= hidden_field(:post, :post_type_id, :value => 3) %>
+        <%# f.collection_select(:post_type_id, PostType.all, :id, :name) %>
+      <!--</div>-->
+      <div class="form-group">
+        <label>My Avatar</label>
+        <%= image_tag(post.avatar_url, class: 'img-thumbnail', style:'width:200px') if post.avatar? %>
+        <%= f.file_field :avatar, class: 'form-control-file'%>
+        <%= f.hidden_field :avatar_cache %>
+      </div>
+        <%= f.submit 'Submit', class: 'btn btn-success'%>
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= f.label :post_type_id %>
-    <%= f.collection_select(:post_type_id, PostType.all, :id, :name) %>
-  </div>
-
-  <div class="field">
-    <label>My Avatar</label>
-    <%= image_tag(post.avatar_url) if post.avatar? %>
-    <%= f.file_field :avatar %>
-    <%= f.hidden_field :avatar_cache %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

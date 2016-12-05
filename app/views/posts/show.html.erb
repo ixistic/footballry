@@ -1,90 +1,92 @@
-<!--<p id="notice"><%= # notice %></p>-->
-
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
-
-<p>
-  <strong>Body:</strong>
-  <%= @post.body.html_safe %>
-</p>
-
-<p>
-  <strong>Created by:</strong>
-  <%= @post.created_by.email %>
-</p>
-
-<p>
-  <strong>Last edited by:</strong>
-  <%= @post.last_edited_by.email %>
-</p>
-
-<% if can? :update, @post %>
-  <%= link_to 'Edit', edit_topic_post_path(@post.topic, @post) %> |
+<div style="padding-bottom: 50px" class="row text-xs-center">
+  <%= render partial: 'layouts/menu' %>
+</div>
+<% if @post.avatar.present? %>
+  <div class="row">
+    <div class="col-md-12">
+      <img src="<%= @post.avatar.url %>" width="200px" class="img-thumbnail">
+    </div>
+  </div>
 <% end %>
+<div class="row">
+  <div class="col-md-12 form-group">
+    <h1>
+      <% @topic = Topic.find_by_id(@post.topic_id) %>
+      <% if @topic.title == 'Marketplace' %>
+          Price : <%= @post.title %> Baht
+      <% else %>
+          <%= @post.title %>
+      <% end %>
+    <% if can? :update, @post %>
+        <%= link_to 'Edit', edit_topic_post_path(@post.topic, @post), class: 'btn btn-info' %>
+    <% end %>
+    </h1>
+  </div>
+  <div class="col-md-12">
+    <p>Created by : <%= @post.created_by.email %></p>
+  </div>
+</div>
+<div class="row" style="padding-top: 50px;padding-bottom: 50px">
+  <div class="col-md-12">
+    <p><%= @post.body.html_safe %></p>
+  </div>
+</div>
+<hr>
+<div class="row" style="padding-bottom: 30px">
+  <div class="col-md-12">
+    <h2>Comments</h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <%= form_for(@comment) do |f| %>
+        <% if @comment.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
 
-<%= link_to 'Back', topic_path(@post.topic) %>
-
-<h1>Comments</h1>
-
-<div class="media">
-  <a class="media-left" href="#">
-    <img class="media-object" src="..." alt="Generic placeholder image">
-  </a>
-  <div class="media-body">
-    <h4 class="media-heading">Media heading</h4>
-    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+              <ul>
+                <% @comment.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+        <% end %>
+        <div class="form-group col-md-10">
+          <%= f.text_field :message, :class => 'form-control' %>
+        </div>
+        <%= hidden_field(:comment, :post_id, :value => @post.id) %>
+        <div class="col-md-2">
+        <%= f.submit 'Submit', :class => 'btn btn-primary btn-block' %>
+        </div>
+    <% end %>
+  </div>
+  <div class="col-md-12">
+    <% @comments.each do |comment| %>
+      <hr>
+      <div class="media">
+        <a class="media-left" href="#">
+          <% if comment.created_by.image.present? %>
+            <img class="media-object" style="width:50px;height: 50px" src="<%= comment.created_by.image %>" alt="Generic placeholder image">
+          <% else %>
+            <img class="media-object" style="width:50px;height: 50px" src="http://www.freeiconspng.com/uploads/profile-icon-9.png" alt="Generic placeholder image">
+          <% end %>
+        </a>
+        <div class="media-body">
+          <h5 class="media-heading">
+            <%= comment.created_by.email %>
+            <%= link_to 'Remove', comment, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger',style: 'float:right' %>
+            <%= link_to 'Edit', edit_comment_path(comment) , class: 'btn btn-info' ,style: 'float:right;margin-right:5px'%>
+          </h5>
+          <%= comment.message %>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
 
-<table>
-  <thead>
-  <tr>
-    <th>Message</th>
-    <th>Created by</th>
-    <th>Last edited by</th>
-    <th colspan="2"></th>
-  </tr>
-  </thead>
 
-  <tbody>
-  <% @comments.each do |comment| %>rake
-      <tr>
-        <td><%= comment.message.html_safe %></td>
-        <td><%= comment.created_by.email %></td>
-        <td><%= comment.last_edited_by.email %></td>
-        <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
-        <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-  <% end %>
-  </tbody>
-</table>
-<br>
 
-<%= form_for(@comment) do |f| %>
-    <% if @comment.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
 
-          <ul>
-            <% @comment.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
 
-    <div class="field">
-      <%= f.text_area :message, :class => "tinymce", :rows => 5, :cols => 60 %>
-    </div>
 
-    <div class="field">
-      <%= hidden_field(:comment, :post_id, :value => @post.id) %>
-    </div>
-
-    <div class="actions">
-      <%= f.submit %>
-    </div>
-<% end %>
 

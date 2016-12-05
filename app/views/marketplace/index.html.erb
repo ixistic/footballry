@@ -1,29 +1,27 @@
-<div class="container">
-  <div class="row text-xs-center">
-    <h1>Marketplace</h1>
-  </div>
-  <div style="padding-bottom: 50px" class="row text-xs-center">
-    <%= render partial: 'layouts/menu' %>
-  </div>
-  <div class="row">
-    <% if @market.present? %>
-        <% @market.each do |post| %>
-            <div class="col-md-4">
-              <div class="card">
-                <% if post.avatar.present? %>
-                    <img class="card-img-top" style="width: 100%; height: 200px" src="<%= post.avatar.url %>" alt="Image cannot load">
-                <% else %>
-                    <img class="card-img-top" style="width: 100%; height: 200px" src="http://1.bp.blogspot.com/-Zr0pmj1bLnM/Uhh7kROhGYI/AAAAAAAAGkE/W51xFS75-Ec/s1600/no-thumbnail.png" alt="Image cannot load">
-                <% end %>
-                <div class="card-block">
-                  <h2 class="card-title text-xs-center" style="color: #d21f30"><%= post.title %> Baht</h2>
-                  <p class="card-text"><%= strip_tags(post.body) %></p>
-                  <%= link_to 'See details', topic_post_path(post.topic_id, post), class: 'btn btn-success btn-block' %>
-                </div>
+<div class="row text-xs-center">
+  <h1>Marketplace</h1>
+</div>
+<div style="padding-bottom: 50px" class="row text-xs-center">
+  <%= render partial: 'layouts/menu' %>
+</div>
+<div class="row">
+  <% if @market.present? %>
+      <% @market.each do |post| %>
+          <div class="col-md-4">
+            <div class="card">
+              <% if post.avatar.present? %>
+                  <img class="card-img-top" style="width: 100%; height: 200px" src="<%= post.avatar.url %>" alt="Image cannot load">
+              <% else %>
+                  <img class="card-img-top" style="width: 100%; height: 200px" src="http://1.bp.blogspot.com/-Zr0pmj1bLnM/Uhh7kROhGYI/AAAAAAAAGkE/W51xFS75-Ec/s1600/no-thumbnail.png" alt="Image cannot load">
+              <% end %>
+              <div class="card-block">
+                <h2 class="card-title text-xs-center" style="color: #d21f30"><%= post.title %> Baht</h2>
+                <p class="card-text"><%= strip_tags(post.body) %></p>
+                <%= link_to 'See details', topic_post_path(post.topic_id, post), class: 'btn btn-success btn-block' %>
               </div>
             </div>
-        <% end %>
-    <% end %>
-  </div>
+          </div>
+      <% end %>
+  <% end %>
 </div>
 

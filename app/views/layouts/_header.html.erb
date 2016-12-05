@@ -9,13 +9,10 @@
     <% if user_signed_in? %>
       <% if current_user.admin? %>
         <li class="nav-item">
-          <a class="nav-link" href="<%= rails_admin_path %>">AdminPanel</a>
+          <a class="nav-link" href="<%= rails_admin_path %>">Admin Panel</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<%= post_types_path %>">PostType</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<%= topics_path %>">Topic</a>
+          <a class="nav-link" href="<%= topics_path %>">Manage Topic</a>
         </li>
       <% end %>
     <% end %>

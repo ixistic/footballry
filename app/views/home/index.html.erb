@@ -1,46 +1,45 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-6">
-      <img style="float: right" width="200px" src="<%= asset_path('home/boy.png') %>" alt="Cannot load image" class="img-fluid">
-    </div>
-    <div class="col-md-6">
-      <img width="200px" src="<%= asset_path('home/girl.png') %>" alt="Cannot load image" class="img-fluid">
-    </div>
+<div class="row">
+  <div class="col-md-6">
+    <img style="float: right" width="200px" src="<%= asset_path('home/boy.png') %>" alt="Cannot load image" class="img-fluid">
   </div>
-  <div class="row">
-    <div class="col-md-12 text-md-center">
-      <h2>Footballry</h2>
-    </div>
-  </div>
-  <%= render partial: 'layouts/menu' %>
-  <div class="row" style="padding-top: 20px">
-    <div class="col-md-12">
-      <table class="table">
-        <thead class="thead-inverse">
-        <tr>
-          <th class="col-md-8">Topic</th>
-          <th class="col-md-1">Posts</th>
-          <th class="col-md-3">Last Posts</th>
-        </tr>
-        </thead>
-        <tbody>
-        <% if !@topics.nil? %>
-          <% @topics.each do |topic| %>
-            <% if !topic.nil? %>
-              <tr>
-                <td class="col-md-8"><%= link_to topic.title, topic %></td>
-                <td class="col-md-1"><%= topic.posts.count %></td>
-                <% if !topic.posts.last.nil? %>
-                  <td class="col-md-3 last_post"><%= topic.posts.last.title %></td>
-                <% end %>
-              </tr>
-            <% end %>
-          <% end %>
-        <% end %>
-        </tbody>
-      </table>
-    </div>
+  <div class="col-md-6">
+    <img width="200px" src="<%= asset_path('home/girl.png') %>" alt="Cannot load image" class="img-fluid">
   </div>
 </div>
+<div class="row">
+  <div class="col-md-12 text-md-center">
+    <h2>Footballry</h2>
+  </div>
+</div>
+<%= render partial: 'layouts/menu' %>
+<div class="row" style="padding-top: 20px">
+  <div class="col-md-12">
+    <table class="table">
+      <thead class="thead-inverse">
+      <tr>
+        <th class="col-md-8">Topic</th>
+        <th class="col-md-1">Posts</th>
+        <th class="col-md-3">Last Posts</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% if !@topics.nil? %>
+        <% @topics.each do |topic| %>
+          <% if !topic.nil? %>
+            <tr>
+              <td class="col-md-8"><%= link_to topic.title, topic %></td>
+              <td class="col-md-1"><%= topic.posts.count %></td>
+              <% if !topic.posts.last.nil? %>
+                <td class="col-md-3 last_post"><%= topic.posts.last.title %></td>
+              <% end %>
+            </tr>
+          <% end %>
+        <% end %>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
 
 

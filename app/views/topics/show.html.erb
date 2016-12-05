@@ -1,48 +1,41 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @topic.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @topic.description %>
-</p>
-
-<p>
-  <strong>Created by:</strong>
-  <%= @topic.created_by.email %>
-</p>
-
-<p>
-  <strong>Last edited by:</strong>
-  <%= @topic.last_edited_by.email %>
-</p>
-
-<% if can? :update, @topic %>
-  <%= link_to 'Edit', edit_topic_path(@topic) %>
-<% end %>
-
-<div class="row" style="padding-top: 20px">
+<div class="row">
+  <div class="col-md-6">
+    <img style="float: right" width="200px" src="<%= asset_path('home/boy.png') %>" alt="Cannot load image" class="img-fluid">
+  </div>
+  <div class="col-md-6">
+    <img width="200px" src="<%= asset_path('home/girl.png') %>" alt="Cannot load image" class="img-fluid">
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12 text-md-center">
+    <h2>Footballry</h2>
+  </div>
+</div>
+<%= render partial: 'layouts/menu' %>
+<div class="row" style="padding-top: 30px">
   <div class="col-md-12 text-xs-right" style="padding-bottom: 10px">
-    <%= link_to 'New Post', new_topic_post_path(@topic), :class => 'btn btn-primary' %>
+    <% if can? :create, Post %>
+      <%= link_to 'New Post', new_topic_post_path(@topic), :class => 'btn btn-primary' %>
+    <% end %>
+    <% if can? :update, @topic %>
+        <%= link_to 'Edit Topic', edit_topic_path(@topic), class: 'btn btn-info' %>
+    <% end %>
   </div>
   <div class="col-md-12">
     <table class="table">
       <thead class="thead-inverse">
       <tr>
-        <th><%= link_to 'Topic', root_path, :style => 'color:white' %> > <%= @topic.title %></th>
-        <th>Starter</th>
-        <th>Replies</th>
+        <th class="col-md-8"><%= link_to 'Topic', root_path, :style => 'color:white' %> > <%= @topic.title %></th>
+        <th class="col-md-2">Starter</th>
+        <th class="col-md-2">Replies</th>
       </tr>
       </thead>
       <tbody>
       <% @topic.posts.each do |post| %>
           <tr>
-            <td><%= link_to post.title, topic_post_path(@topic, post) %></td>
-            <td><%= post.created_by.email %></td>
-            <td><%= Comment.where(:post_id => post.id).count %></td>
+            <td class="col-md-8"><%= link_to post.title, topic_post_path(@topic, post) %></td>
+            <td class="col-md-2"><%= post.created_by.email %></td>
+            <td class="col-md-2"><%= Comment.where(:post_id => post.id).count %></td>
           </tr>
       <% end %>
       </tbody>
