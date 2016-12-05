@@ -17,7 +17,7 @@ module FootballryV001
         'X-Frame-Options' => 'ALLOWALL'
     }
     config.tinymce.install = :compile
-    config.assets.initialize_on_precompile = false
+    # config.assets.initialize_on_precompile = false
     config.assets.enabled = true
   end
 end
