@@ -1,4 +1,4 @@
-<div style="padding-bottom: 50px" class="row text-xs-center">
+<div style="padding-bottom: 15px" class="row text-xs-center">
   <%= render partial: 'layouts/menu' %>
 </div>
 <% if @post.avatar.present? %>
@@ -32,12 +32,13 @@
   </div>
 </div>
 <hr>
-<div class="row" style="padding-bottom: 30px">
+<br>
+<div class="row" style="padding-bottom: 30px;padding-top: 10px;background-color: #F2F1EF">
   <div class="col-md-12">
     <h2>Comments</h2>
   </div>
 </div>
-<div class="row">
+<div class="row" style="padding-bottom: 10px;background-color: #F2F1EF">
   <div class="col-md-12">
     <% if can? :create, Comment %>
       <%= form_for(@comment) do |f| %>

@@ -1,18 +1,25 @@
-<div class="row" style="padding-top: 20px">
+<div class="row" style="background-color: #DADFE1;padding-top: 10px">
+  <div class="col-md-12 text-md-center">
+    <!--<h1>Footballry</h1>-->
+    <center><img width="512px" src="<%= asset_path('home/logo.png') %>" alt="Cannot load image" class="img-fluid"></center>
+  </div>
+</div>
+<div class="row" style="padding-top: 20px;padding-bottom:20px;background-color: #DADFE1">
   <div class="col-md-2 offset-md-2">
     <center><a href="<%= home_index_path %>"><img width="128px" src="<%= asset_path('home/forum.png') %>" alt="Cannot load image" class="img-fluid"></a><br>
-    <%= link_to 'Forum Home', home_index_path , class: 'btn btn-secondary btn-block' %></center>
+    <%= link_to 'Forum', home_index_path , class: 'btn btn-success btn-block' %></center>
   </div>
   <div class="col-md-2">
     <center><a href="<%= news_index_path %>"><img width="128px" src="<%= asset_path('home/news.png') %>" alt="Cannot load image" class="img-fluid"></a><br>
-    <%= link_to 'News', news_index_path , class: 'btn btn-secondary btn-block' %></center>
+    <%= link_to 'News', news_index_path , class: 'btn btn-success btn-block' %></center>
   </div>
   <div class="col-md-2">
     <center><a href="<%= video_index_path %>"><img width="128px" src="<%= asset_path('home/video.png') %>" alt="Cannot load image" class="img-fluid"></a><br>
-    <%= link_to 'Video', video_index_path , class: 'btn btn-secondary btn-block' %></center>
+    <%= link_to 'Video', video_index_path , class: 'btn btn-success btn-block' %></center>
   </div>
   <div class="col-md-2">
     <center><a href="<%= marketplace_index_path %>"><img width="128px" src="<%= asset_path('home/market.png') %>" alt="Cannot load image" class="img-fluid"></a><br>
-    <%= link_to 'Marketplace', marketplace_index_path , class: 'btn btn-secondary btn-block' %></center>
+    <%= link_to 'Marketplace', marketplace_index_path , class: 'btn btn-success btn-block' %></center>
   </div>
 </div>
+<br><hr>
