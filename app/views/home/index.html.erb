@@ -12,31 +12,15 @@
       <h2>Footballry</h2>
     </div>
   </div>
-  <div class="row" style="padding-top: 20px">
-    <div class="col-md-2 offset-md-1">
-      <button type="button" class="btn btn-secondary btn-block">Forum Home</button>
-    </div>
-    <div class="col-md-2">
-      <button type="button" class="btn btn-secondary btn-block">News</button>
-    </div>
-    <div class="col-md-2">
-      <button type="button" class="btn btn-secondary btn-block">Video</button>
-    </div>
-    <div class="col-md-2">
-      <button type="button" class="btn btn-secondary btn-block">Schedules</button>
-    </div>
-    <div class="col-md-2">
-      <button type="button" class="btn btn-secondary btn-block">Marketplace</button>
-    </div>
-  </div>
+  <%= render partial: 'layouts/menu' %>
   <div class="row" style="padding-top: 20px">
     <div class="col-md-12">
       <table class="table">
         <thead class="thead-inverse">
         <tr>
-          <th>Topic</th>
-          <th>Posts</th>
-          <th>Last Posts</th>
+          <th class="col-md-8">Topic</th>
+          <th class="col-md-1">Posts</th>
+          <th class="col-md-3">Last Posts</th>
         </tr>
         </thead>
         <tbody>
@@ -44,10 +28,10 @@
           <% @topics.each do |topic| %>
             <% if !topic.nil? %>
               <tr>
-                <td><%= link_to topic.title, topic %></td>
-                <td><%= topic.posts.count %></td>
+                <td class="col-md-8"><%= link_to topic.title, topic %></td>
+                <td class="col-md-1"><%= topic.posts.count %></td>
                 <% if !topic.posts.last.nil? %>
-                  <td><%= topic.posts.last.title %></td>
+                  <td class="col-md-3 last_post"><%= topic.posts.last.title %></td>
                 <% end %>
               </tr>
             <% end %>

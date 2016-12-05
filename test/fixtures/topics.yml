@@ -2,14 +2,21 @@
 
 one:
   id: 1
-  title: MyString
+  title: News
   description: MyString
   created_by_id: 1
   last_edited_by_id: 1
 
 two:
   id: 2
-  title: MyString
+  title: Video
+  description: MyString
+  created_by_id: 2
+  last_edited_by_id: 2
+
+two:
+  id: 3
+  title: Marketplace
   description: MyString
   created_by_id: 2
   last_edited_by_id: 2

@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'marketplace/index'
+
+  get 'schedules/index'
+
+  get 'video/index'
+
+  get 'news/index'
+
   resources :comments
   resources :topics do
     resources :posts
@@ -7,10 +15,6 @@ Rails.application.routes.draw do
   resources :post_types
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-
-  # devise_scope :user do
-  #   delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
-  # end
 
   get 'home/index'
 

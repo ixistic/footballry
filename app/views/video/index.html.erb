@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row text-xs-center">
+    <h1>Video</h1>
+  </div>
+  <div style="padding-bottom: 50px" class="row text-xs-center">
+    <%= render partial: 'layouts/menu' %>
+  </div>
+  <div class="row">
+    <% if @video.present? %>
+        <% @video.each do |post| %>
+            <div class="col-md-4">
+              <div class="card">
+                <% if post.avatar.present? %>
+                    <img class="card-img-top" style="width: 100%; height: 200px" src="<%= post.avatar.url %>" alt="Image cannot load">
+                <% else %>
+                    <img class="card-img-top" style="width: 100%; height: 200px" src="http://1.bp.blogspot.com/-Zr0pmj1bLnM/Uhh7kROhGYI/AAAAAAAAGkE/W51xFS75-Ec/s1600/no-thumbnail.png" alt="Image cannot load">
+                <% end %>
+                <div class="card-block">
+                  <h6 class="card-title"><%= post.title %></h6>
+                  <%= link_to 'Watch now', topic_post_path(post.topic_id, post), class: 'btn btn-danger btn-block' %>
+                </div>
+              </div>
+            </div>
+        <% end %>
+    <% end %>
+  </div>
+</div>
+

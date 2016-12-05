@@ -35,7 +35,6 @@
         <th><%= link_to 'Topic', root_path, :style => 'color:white' %> > <%= @topic.title %></th>
         <th>Starter</th>
         <th>Replies</th>
-        <th>Views</th>
       </tr>
       </thead>
       <tbody>
@@ -43,8 +42,7 @@
           <tr>
             <td><%= link_to post.title, topic_post_path(@topic, post) %></td>
             <td><%= post.created_by.email %></td>
-            <td>10</td>
-            <td>100</td>
+            <td><%= Comment.where(:post_id => post.id).count %></td>
           </tr>
       <% end %>
       </tbody>
