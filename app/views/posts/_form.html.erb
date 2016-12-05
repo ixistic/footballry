@@ -14,7 +14,11 @@
       <% end %>
 
       <div class="form-group">
-        <%= f.label :title %>
+        <% if topic.title == 'Marketplace' %>
+          <%= f.label 'Price' %>
+        <% else %>
+          <%= f.label :title %>
+        <% end %>
         <%= f.text_field :title, class: 'form-control'%>
       </div>
 

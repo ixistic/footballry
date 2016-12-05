@@ -1,5 +1,10 @@
 <div class="row text-xs-center">
-  <h1>News</h1>
+  <h1>News
+    <% if current_user && current_user.admin? %>
+        <% @topic = Topic.find_by(title: 'News') %>
+        <%= link_to 'Add news', new_topic_post_path(@topic), :class => 'btn btn-primary' %>
+    <% end %>
+  </h1>
 </div>
 <div style="padding-bottom: 50px" class="row text-xs-center">
   <%= render partial: 'layouts/menu' %>

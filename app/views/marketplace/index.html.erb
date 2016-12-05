@@ -1,5 +1,10 @@
 <div class="row text-xs-center">
-  <h1>Marketplace</h1>
+  <h1>Marketplace
+    <% if current_user && (current_user.regular? || current_user.admin?) %>
+        <% @topic = Topic.find_by(title: 'Marketplace') %>
+        <%= link_to 'Add product', new_topic_post_path(@topic), :class => 'btn btn-primary' %>
+    <% end %>
+  </h1>
 </div>
 <div style="padding-bottom: 50px" class="row text-xs-center">
   <%= render partial: 'layouts/menu' %>

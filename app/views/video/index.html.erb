@@ -1,5 +1,10 @@
 <div class="row text-xs-center">
-  <h1>Video</h1>
+  <h1>Video
+    <% if current_user && current_user.admin? %>
+        <% @topic = Topic.find_by(title: 'Video') %>
+        <%= link_to 'Add video', new_topic_post_path(@topic), :class => 'btn btn-primary' %>
+    <% end %>
+  </h1>
 </div>
 <div style="padding-bottom: 50px" class="row text-xs-center">
   <%= render partial: 'layouts/menu' %>
