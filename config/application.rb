@@ -17,5 +17,6 @@ module FootballryV001
         'X-Frame-Options' => 'ALLOWALL'
     }
     config.tinymce.install = :compile
+    config.serve_static_assets = true
   end
 end
